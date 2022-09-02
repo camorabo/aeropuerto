@@ -10,3 +10,6 @@ class Avion_view(viewsets.ModelViewSet):
     queryset = Avion.objects.all()
     # El serializador que vamos a tener.
     serializer_class = Avion_Serializer
+class Piloto_view(viewsets.ModelViewSet):
+    queryset = Piloto.objects.all()
+    serializer_class = Piloto_Serializer
