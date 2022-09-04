@@ -27,6 +27,8 @@ SECRET_KEY = 'django-insecure-yd4e3$f*g8in%stq#n(&qzcc_p5+0kcj2%5@ljeu^+3#b9c41y
 # Muestra los errores que van saliendo si está en True.
 DEBUG = True
 
+# Para agregar el modelo de autenticación del usuario
+AUTH_USER_MODEL = 'aeropuerto_app.Usuario'
 # Hosts permitidos (Sólo la interfaz de Angular).
 ALLOWED_HOSTS = []
 
@@ -42,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'aeropuerto_app.apps.AeropuertoAppConfig',
     'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 # Software que está metido en la mitad. Todo lo que me da seguridad. Se deja quieto.
@@ -132,3 +135,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# Reglas de conexión:
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated'],
+    'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework.authentication.TokenAuthentication'],
+}
